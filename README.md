@@ -4,6 +4,10 @@
 
 This project provides a FastAPI backend using REST that integrates multiple large language models (LLMs) to perform natural language tasks such as resume parsing. It supports both heavy cloud-hosted models for complex tasks and lightweight local models for efficient inference.
 
+You can send POST requests to our deployed API at:
+
+`https://llmapi-p5i9.onrender.com/ask`
+
 
 ## Model Exploration and Choices
 
@@ -36,7 +40,6 @@ This project provides a FastAPI backend using REST that integrates multiple larg
   - Model downloaded and tested locally (localmodel.py).
   - Not yet self-hosted due to lack of free-tier cloud resources and expiration of free tier in AWS.
 
----
 
 ## Architecture
 
@@ -44,8 +47,6 @@ This project provides a FastAPI backend using REST that integrates multiple larg
 - Supports two backend flows:
   - **DeepSeek / OpenAI GPT** via Hugging Face API for heavy LLM inference.  
   - **Quantized Llama 2** model locally (planned for self-hosting).
-
----
 
 ## Installation
 
@@ -82,13 +83,7 @@ uvicorn app:app --reload
 ```
 
 ### Test the API
-You can test the API using `curl` or any HTTP client:
-
-```bash
-curl -X POST "http://localhost:8000/ask" -H "Content-Type: application/json" -d "{\"prompt\": \"What is the capital of India?\", \"model\": \"openai\", \"max_tokens\": 100}"
-```
-
-You can also use PowerShell to test the API:
+You can test the API using Powershell or any HTTP client:
 
 ```bash
 Invoke-RestMethod -Uri "http://localhost:8000/ask" `
@@ -97,21 +92,5 @@ Invoke-RestMethod -Uri "http://localhost:8000/ask" `
   -Body '{ "prompt": "What is the capital of India?", "model": "openai", "max_tokens": 100 }'
 ```
 
----
-
-```json
-{
-  "model": "openai",
-  "response": "The capital of India is New Delhi. It serves as the seat of the Indian government, housing the President’s residence (Rashtrapati Bhavan), the Parliament, and the Supreme Court, among other key institutions."
-}
-```
-
----
-
-```json
-{
-  "model": "deepseek",
-  "response": "<think>Okay, so I need to figure out the capital of India. Hmm, I'm not entirely sure, but I think it's a city that starts with an 'N'. Maybe New Delhi? Wait, isn't Delhi the capital? Or is it Mumbai? No, I think Mumbai is more of a financial hub. Let me think. I remember learning that India has a federal structure with states and union territories. The capital is a specific city. I've heard of New Delhi being the capital, but I'm a bit confused because sometimes people just say Delhi. Are they the same? I think New Delhi is a part of Delhi, maybe a district or something. So, the official capital is New Delhi. Yeah, that makes sense. I should probably double-check that, but I'm pretty sure it's New Delhi.</think>
-  The capital of India is New Delhi."
-}
-```
+## API Documentation
+The API documentation is available at `/docs` route for interactive testing and exploration of endpoints.
