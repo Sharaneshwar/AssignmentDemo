@@ -1,0 +1,6 @@
+uvicorn
+groq
+fastapi
+pydantic
+typing
+dotenv
