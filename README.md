@@ -1,4 +1,4 @@
-# LLM API for Text Generation
+# LLM API with Quantized and Cloud Models
 
 ## Overview
 
